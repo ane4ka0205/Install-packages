@@ -1,0 +1,15 @@
+---
+- name: Add new users
+  hosts: all
+  tasks:
+    - name: add new users
+      when: ansible_os_family == "Redhat"
+      user:
+        name: "{{ item }}"
+      with_items:
+        - anna
+        - bob
+        - john
+        - alice
+        - bryan
+        - oliver
