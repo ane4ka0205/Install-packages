@@ -1,16 +1,16 @@
 ---
 - name: Download wordpress
-  hosts: r1soft
+  hosts: all
   tasks:
     - name: Download package
-      when: ansible_distribution == "CentOS"
+      when: ansible_os_family == "Redhat"
       get_url: 
         url: https://wordpress.org/latest.tar.gz
         dest: /tmp/latest.tar.gz
 
 
     - name: Install httpd
-      when: ansible_distribution == "CentOS"
+      when: ansible_os_family == "Redhat"
       package:
         name: "{{ item }}"
       with_items:
